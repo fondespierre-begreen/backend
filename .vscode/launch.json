@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BegreenApplication<begreen>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "fr.java.spring.begreen.begreen.BegreenApplication",
+            "projectName": "begreen",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BegreenApplication<begreen>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "fr.java.spring.begreen.App.BegreenApplication",
+            "projectName": "begreen",
+            "args": ""
+        }
+    ]
+}
