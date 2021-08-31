@@ -1,9 +1,13 @@
 package fr.java.spring.begreen.App.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.java.spring.begreen.App.model.Serie;
@@ -14,6 +18,17 @@ import fr.java.spring.begreen.App.repository.SerieRepository;
 public class SerieController {
     
     @Autowired SerieRepository serieRepository;
+
+    @PostMapping(path = "/series/init")
+    public void getInitSeries(@RequestBody Serie[] initSeries) {
+        ArrayList<Serie> series = new ArrayList<Serie>();
+
+        for (int i = 0; i < initSeries.length; ++i) {
+            series.add(initSeries[i]);
+        }
+
+        this.serieRepository.saveAll(series);
+    }
 
     @GetMapping(path = "/series")
     public Iterable<Serie> getSeries() {
