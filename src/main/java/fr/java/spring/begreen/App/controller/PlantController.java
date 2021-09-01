@@ -12,14 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.PlantRepository;
+import fr.java.spring.begreen.App.service.PlantService;
 
-@CrossOrigin(origins = "http://localhost:8000", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:8100", allowedHeaders = "*")
 @RestController
 public class PlantController {
 
-    @Autowired
-    PlantRepository plantRepository;
+    @Autowired PlantService plantService;
+    @Autowired PlantRepository plantRepository;
 
+    /**
+     * Posting all datas in bdd
+     * @param initPlants
+     */
     @PostMapping(path = "/plants/init")
     public void getInitPlants(@RequestBody Plant[] initPlants) {
         ArrayList<Plant> plants = new ArrayList<Plant>();
@@ -31,14 +36,25 @@ public class PlantController {
         this.plantRepository.saveAll(plants);
     }
 
+    /**
+     * Get plants[] data
+     * @return
+     * @throws Exception
+     */
     @GetMapping(path = "/plants")
-    public Iterable<Plant> getPlants() {
-        return this.plantRepository.findAll();
+    public Iterable<Plant> getPlants() throws Exception {
+        return this.plantService.findAll();
     }
 
+    /**
+     * Get plant by id
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @GetMapping(path = "/plants/{id}")
-    public Plant getPlantById(@PathVariable(value = "id") Long id) {
-        return this.plantRepository.findById(id).get();
+    public Plant getPlantById(@PathVariable(value = "id") Long id) throws Exception {
+        return this.plantService.findById(id);
     }
 
 }

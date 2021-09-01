@@ -19,17 +19,6 @@ public class SerieController {
     
     @Autowired SerieRepository serieRepository;
 
-    @PostMapping(path = "/series/init")
-    public void getInitSeries(@RequestBody Serie[] initSeries) {
-        ArrayList<Serie> series = new ArrayList<Serie>();
-
-        for (int i = 0; i < initSeries.length; ++i) {
-            series.add(initSeries[i]);
-        }
-
-        this.serieRepository.saveAll(series);
-    }
-
     @GetMapping(path = "/series")
     public Iterable<Serie> getSeries() {
     return this.serieRepository.findAll();
