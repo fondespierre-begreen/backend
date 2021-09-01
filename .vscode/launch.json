@@ -19,6 +19,16 @@
             "mainClass": "fr.java.spring.begreen.App.BegreenApplication",
             "projectName": "begreen",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BegreenApplication<app>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "fr.java.spring.begreen.App.BegreenApplication",
+            "projectName": "app",
+            "args": ""
         }
     ]
 }
