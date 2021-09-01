@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.PlantRepository;
 
-@CrossOrigin(origins = "http://localhost:8000", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:8100", allowedHeaders = "*")
 @RestController
 public class PlantController {
 

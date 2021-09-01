@@ -2,7 +2,7 @@
   datasource:
     url: jdbc:mysql://172.17.0.1:3306/begreen
     username: root
-    password: lamainverte
+    password: root
   jpa:
     hibernate:
       ddl-auto: update
