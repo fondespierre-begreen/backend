@@ -1,6 +1,5 @@
 package fr.java.spring.begreen.App.model;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,21 +12,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "serie")
-public class Serie {
+@Table(name = "question")
+public class Question {
     
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Integer total;
+    private String description;
+    private String plantField;
 
-    // private Date date;
-
-    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
-    private List<Question> questionsList;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Serie serie;
 }

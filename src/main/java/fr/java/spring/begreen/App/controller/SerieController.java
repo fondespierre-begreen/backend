@@ -1,7 +1,5 @@
 package fr.java.spring.begreen.App.controller;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,5 +25,10 @@ public class SerieController {
     @GetMapping(path = "/series/{id}")
     public Serie getSerieById(@PathVariable(value = "id") Long id) {
         return this.serieRepository.findById(id).get();
+    }
+    
+    @PostMapping(path = "/series/create")
+    public Serie postSerie(@RequestBody Serie serie){
+        return this.serieRepository.save(serie);
     }
 }
