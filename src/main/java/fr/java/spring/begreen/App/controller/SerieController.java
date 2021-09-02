@@ -2,12 +2,14 @@ package fr.java.spring.begreen.App.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.java.spring.begreen.App.model.Question;
 import fr.java.spring.begreen.App.model.Serie;
 import fr.java.spring.begreen.App.repository.SerieRepository;
 
@@ -19,16 +21,16 @@ public class SerieController {
 
     @GetMapping(path = "/series")
     public Iterable<Serie> getSeries() {
-    return this.serieRepository.findAll();
+        return this.serieRepository.findAll();
     }
 
-    @GetMapping(path = "/series/{id}")
-    public Serie getSerieById(@PathVariable(value = "id") Long id) {
-        return this.serieRepository.findById(id).get();
-    }
-    
     @PostMapping(path = "/series/create")
     public Serie postSerie(@RequestBody Serie serie){
-        return this.serieRepository.save(serie);
+        System.out.print(serie);
+        Question q = new Question();
+        q.setId(1L);
+        this.serieRepository.save(serie);
+        return serie;
     }
+    
 }
