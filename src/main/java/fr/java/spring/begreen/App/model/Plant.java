@@ -34,4 +34,7 @@ public class Plant {
     @JsonIgnore
     private Question question;
 
+    private String img;
+
+
 }
