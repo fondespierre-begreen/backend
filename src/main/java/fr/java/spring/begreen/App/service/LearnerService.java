@@ -18,7 +18,7 @@ public class LearnerService {
      */
     public Iterable<Learner> findAll() throws Exception {
         Iterable<Learner> learners = this.learnerRepository.findAll();
-        if(learners == null) throw new Exception();
+        if(!learners.iterator().hasNext()) throw new Exception();
 
         return learners;
     }
@@ -31,6 +31,20 @@ public class LearnerService {
     public Learner findById(Long id) throws Exception {
         Learner learner = this.learnerRepository.findById(id).get();
         if(id == null || learner == null) throw new Exception();
+        
+        return learner;
+    }
+
+    public Learner postOne(Learner learner) throws Exception {
+        if(learner == null) throw new Exception();
+        
+        
+        //To service then
+        learner.getPlants().iterator().forEachRemaining(plant -> {
+            plant.setLearner(learner);
+        });
+        
+        this.learnerRepository.save(learner);
         
         return learner;
     }
