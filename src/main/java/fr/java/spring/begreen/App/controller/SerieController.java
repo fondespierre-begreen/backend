@@ -29,7 +29,11 @@ public class SerieController {
 
     @PostMapping(path = "/series/create")
     public Serie postSerie(@RequestBody Serie serie){
-        System.out.print(serie);
+
+        //To service then
+        serie.getQuestion().iterator().forEachRemaining(question -> {
+            question.setSerie(serie);
+        });
 
         this.serieRepository.save(serie);
         return serie;

@@ -26,7 +26,7 @@ public class Serie {
     private Long id;
     private String total;
 
-    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "serie")
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "serie")
     private List<Question> question = new ArrayList<Question>();
 
 }
