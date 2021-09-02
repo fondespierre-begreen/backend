@@ -1,5 +1,7 @@
 package fr.java.spring.begreen.App.controller;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +20,7 @@ import fr.java.spring.begreen.App.repository.SerieRepository;
 public class SerieController {
     
     @Autowired SerieRepository serieRepository;
+    @Autowired EntityManager em;
 
     @GetMapping(path = "/series")
     public Iterable<Serie> getSeries() {
@@ -27,8 +30,7 @@ public class SerieController {
     @PostMapping(path = "/series/create")
     public Serie postSerie(@RequestBody Serie serie){
         System.out.print(serie);
-        Question q = new Question();
-        q.setId(1L);
+
         this.serieRepository.save(serie);
         return serie;
     }

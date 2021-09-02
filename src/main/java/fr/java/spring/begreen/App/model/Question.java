@@ -18,11 +18,11 @@ import lombok.Generated;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Serie serie;
 
 

@@ -1,7 +1,9 @@
 package fr.java.spring.begreen.App.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Generated;
@@ -24,7 +26,7 @@ public class Serie {
     private Long id;
     private String total;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "serie")
-    private Set<Question> question = new HashSet<>();
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "serie")
+    private List<Question> question = new ArrayList<Question>();
 
 }
