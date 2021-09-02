@@ -57,4 +57,10 @@ public class PlantController {
         return this.plantService.findById(id);
     }
 
+
+    @PostMapping(path = "/plants")
+    public Plant postPlant(@RequestBody Plant plant) throws Exception {
+        System.out.print(plant);
+        return this.plantService.postOne(plant);
+    }
 }

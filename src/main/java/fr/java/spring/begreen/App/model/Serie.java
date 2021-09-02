@@ -27,6 +27,6 @@ public class Serie {
     private String total;
 
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "serie")
-    private List<Question> question = new ArrayList<Question>();
+    private List<Question> questions = new ArrayList<Question>();
 
 }

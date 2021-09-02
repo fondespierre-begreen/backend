@@ -31,12 +31,13 @@ public class SerieController {
     public Serie postSerie(@RequestBody Serie serie){
 
         //To service then
-        serie.getQuestion().iterator().forEachRemaining(question -> {
+        serie.getQuestions().iterator().forEachRemaining(question -> {
             question.setSerie(serie);
         });
 
         this.serieRepository.save(serie);
         return serie;
     }
+    
     
 }
