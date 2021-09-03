@@ -18,7 +18,7 @@ public class LearnerService {
      */
     public Iterable<Learner> findAll() throws Exception {
         Iterable<Learner> learners = this.learnerRepository.findAll();
-        if(!learners.iterator().hasNext()) throw new Exception();
+        // if(!learners.iterator().hasNext()) throw new Exception();
 
         return learners;
     }

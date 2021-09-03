@@ -8,14 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -36,12 +33,13 @@ public class Plant {
     @OneToOne(mappedBy = "plant")
     @JsonIgnore
     private Question question;
-
-    private String img;
     
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Learner learner;
+
+    @OneToMany(cascade = {CascadeType.ALL,CascadeType.REFRESH}, mappedBy = "plant")
+    private List<Photo> photos = new ArrayList<Photo>();
 
 
 }

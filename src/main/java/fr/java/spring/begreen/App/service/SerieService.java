@@ -1,11 +1,12 @@
 package fr.java.spring.begreen.App.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.stereotype.Service;
 
 import fr.java.spring.begreen.App.model.Serie;
 import fr.java.spring.begreen.App.repository.SerieRepository;
 
+@Service
 public class SerieService {
     
     @Autowired SerieRepository serieRepository;
@@ -42,7 +43,6 @@ public class SerieService {
      */
     public Serie postOne(Serie serie) throws Exception{
         if(serie == null) throw new Exception();
-        //To service then
         serie.getQuestions().iterator().forEachRemaining(question -> {
             question.setSerie(serie);
         });
