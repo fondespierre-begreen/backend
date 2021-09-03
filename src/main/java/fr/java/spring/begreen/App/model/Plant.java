@@ -41,5 +41,8 @@ public class Plant {
     @OneToMany(cascade = {CascadeType.ALL,CascadeType.REFRESH}, mappedBy = "plant")
     private List<Photo> photos = new ArrayList<Photo>();
 
+    @OneToMany(cascade = {CascadeType.ALL,CascadeType.REFRESH}, mappedBy = "plant")
+    private List<Choice> choices = new ArrayList<Choice>();
+
 
 }
