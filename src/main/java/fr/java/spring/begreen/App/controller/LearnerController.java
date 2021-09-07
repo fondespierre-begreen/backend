@@ -1,5 +1,7 @@
 package fr.java.spring.begreen.App.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.java.spring.begreen.App.model.Learner;
+import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.LearnerRepository;
 import fr.java.spring.begreen.App.service.LearnerService;
 
@@ -19,6 +22,7 @@ public class LearnerController {
 
     @Autowired LearnerService learnerService;
     @Autowired LearnerRepository learnerRepository;
+
 
     /**
      * Récupère les apprentants
@@ -52,5 +56,16 @@ public class LearnerController {
         return this.learnerService.postOne(learner);
     }
 
+    /**
+     * Récupère les plants de l'apprenant par son id
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(path = "/learners/{id}/plants")
+    public List<Plant> plato(@PathVariable Long id) throws Exception{
+        Learner learner = this.learnerService.findById(id);
+        return learner.getPlants();
+    }
     
 }
