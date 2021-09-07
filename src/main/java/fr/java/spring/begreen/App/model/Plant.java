@@ -30,18 +30,19 @@ public class Plant {
 
     private String description;
 
-    @OneToOne(mappedBy = "plant")
     @JsonIgnore
+    @OneToOne(mappedBy = "plant")
     private Question question;
     
     @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Learner learner;
 
-    @OneToMany(cascade = {CascadeType.ALL,CascadeType.REFRESH}, mappedBy = "plant")
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "plant")
     private List<Photo> photos = new ArrayList<Photo>();
 
-    @OneToMany(cascade = {CascadeType.ALL,CascadeType.REFRESH}, mappedBy = "plant")
+    @JsonIgnore
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "plant")
     private List<Choice> choices = new ArrayList<Choice>();
 
 

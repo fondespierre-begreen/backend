@@ -32,8 +32,11 @@ public class Question {
     @OneToOne(cascade = CascadeType.PERSIST)
     private Plant plant;
 
-    @OneToOne
-    private Choice Choice;
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private List<Choice> choices = new ArrayList<Choice>();
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private List<Answer> answers = new ArrayList<Answer>();
 
 
 }

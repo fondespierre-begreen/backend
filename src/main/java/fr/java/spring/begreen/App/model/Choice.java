@@ -1,10 +1,16 @@
 package fr.java.spring.begreen.App.model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,11 +32,14 @@ public class Choice {
     @ManyToOne
     private Plant plant;
     
-    @OneToOne
+    @ManyToOne
+    @JsonIgnore
     private Question question;
 
-    @OneToOne
-    private Answer answer;
+    @OneToMany(mappedBy = "choice", cascade = CascadeType.ALL) //fk_answer
+    private List<Answer> answers = new ArrayList<Answer>();
 
+
+    
 
 }

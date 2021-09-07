@@ -1,10 +1,14 @@
 package fr.java.spring.begreen.App.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -17,6 +21,19 @@ public class Answer {
     private Long id;
 
     //Learner unique answer.
-    @OneToOne
+    @JsonIgnore
+    @ManyToOne
     private Choice choice;
+
+    @JsonIgnore
+    @ManyToOne
+    private Learner learner;
+
+    
+    @JsonIgnore
+    @ManyToOne
+    private Question question;
+
+
+
 }

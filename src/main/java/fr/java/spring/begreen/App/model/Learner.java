@@ -31,4 +31,8 @@ public class Learner {
 
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "learner")
     private List<Plant> plants = new ArrayList<Plant>();
+
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "learner")
+    private List<Answer> answers = new ArrayList<Answer>();
+
 }
