@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -27,7 +28,7 @@ public class Learner {
     
     private Boolean role;
 
-    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "learner")
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "learner")
     private List<Plant> plants = new ArrayList<Plant>();
 
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "learner")

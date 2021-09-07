@@ -5,11 +5,14 @@ import org.springframework.stereotype.Service;
 
 import fr.java.spring.begreen.App.model.Learner;
 import fr.java.spring.begreen.App.repository.LearnerRepository;
+import fr.java.spring.begreen.App.repository.PlantRepository;
 
 @Service
 public class LearnerService {
     
     @Autowired LearnerRepository learnerRepository;
+
+    @Autowired PlantRepository plantRepository;
 
     /**
      * Récupère la listes des apprenants en bdd
@@ -35,21 +38,22 @@ public class LearnerService {
         return learner;
     }
 
-    /**
-     * Crée un nouvelle utilisateur
-     * @param learner
-     * @return
-     * @throws Exception
-     */
-    public Learner postOne(Learner learner) throws Exception {
-        // learner.getPlants().iterator().forEachRemaining(plant -> {
-            //     plant.setLearner(learner);
-            // });
-            
-        if(learner == null) throw new Exception();
-        //ici faire les modifications sur l'apprenant
-        this.learnerRepository.save(learner);
+    // /**
+    //  * Crée un nouvelle utilisateur
+    //  * @param learner
+    //  * @return
+    //  * @throws Exception
+    //  */
+    // public List<Plant> postPlantByUserId(Plant plant,Long id) throws Exception {
+    //     if(id == null) throw new Exception();
+
+    //     Learner learner = this.learnerRepository.findById(id).get();
+    //     List<Plant> oldList = learner.getPlants();
+    //     oldList.add(plant);
+
+    //     this.plantRepository.saveAll(oldList);
+
+    //     return oldList;
         
-        return learner;
-    }
+    // }
 }

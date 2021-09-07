@@ -1,7 +1,15 @@
 package fr.java.spring.begreen.App.controller;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.java.spring.begreen.App.model.Learner;
+import fr.java.spring.begreen.App.model.Photo;
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.PlantRepository;
 import fr.java.spring.begreen.App.service.PlantService;
@@ -21,6 +29,8 @@ public class PlantController {
 
     @Autowired PlantService plantService;
     @Autowired PlantRepository plantRepository;
+
+    @Autowired EntityManager em;
 
     /**
      * Crée un toute les plantes JSON
@@ -70,14 +80,15 @@ public class PlantController {
     }
 
     /**
-     * Supprimer une plante par son id
-     * @param id
+     * Crée une plante a l'apprenant
+     * @param id = learner id
      * @return
      * @throws Exception
      */
-    @PostMapping(path = "/plants")
-    public Plant postPlant(@RequestBody Plant plant) throws Exception {
-        System.out.print(plant);
-        return this.plantService.postOne(plant);
+    @PostMapping(path = "/plants/add/{id}")
+    public Plant createPlant(@RequestBody Plant plant, @PathVariable Long id) throws Exception {
+        return this.plantService.postOne(plant, id);
     }
+
+
 }

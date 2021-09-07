@@ -46,24 +46,13 @@ public class LearnerController {
     }
 
     /**
-     * Crée un apprenant 
-     * @param learner
-     * @return
-     * @throws Exception
-     */
-    @PostMapping(value = "/learners")
-    public Learner postLearner(@RequestBody Learner learner) throws Exception {
-        return this.learnerService.postOne(learner);
-    }
-
-    /**
      * Récupère les plants de l'apprenant par son id
      * @param id
      * @return
      * @throws Exception
      */
     @GetMapping(path = "/learners/{id}/plants")
-    public List<Plant> plato(@PathVariable Long id) throws Exception{
+    public List<Plant> getPlantsByLearner(@PathVariable Long id) throws Exception {
         Learner learner = this.learnerService.findById(id);
         return learner.getPlants();
     }

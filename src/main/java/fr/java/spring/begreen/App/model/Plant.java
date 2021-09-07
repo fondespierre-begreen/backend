@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -31,14 +32,14 @@ public class Plant {
     private String description;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "plant")
+    @OneToOne(mappedBy = "plant", optional = true)
     private Question question;
     
     @JsonIgnore
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Learner learner;
 
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "plant")
+    @OneToMany(cascade = {CascadeType.ALL, CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "plant")
     private List<Photo> photos = new ArrayList<Photo>();
 
     @JsonIgnore

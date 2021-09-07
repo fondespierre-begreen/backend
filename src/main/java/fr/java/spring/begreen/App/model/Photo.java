@@ -1,5 +1,6 @@
 package fr.java.spring.begreen.App.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,6 @@ public class Photo {
     private String url;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE})
     private Plant plant;
 }

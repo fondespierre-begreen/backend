@@ -1,8 +1,12 @@
 package fr.java.spring.begreen.App.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.java.spring.begreen.App.model.Learner;
+import fr.java.spring.begreen.App.model.Photo;
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.PlantRepository;
 
@@ -42,16 +46,15 @@ public class PlantService {
      * @return
      * @throws Exception
      */
-    public Plant postOne(Plant plant) throws Exception {
-        // plant.getPhotos().iterator().forEachRemaining(photo -> {
-        //     photo.setPlant(plant);
-        // });
-
-        if(plant == null) throw new Exception();
+    public Plant postOne(Plant plant, Long id) throws Exception {
+        if(plant == null || id == null) throw new Exception();
+        Learner l = new Learner();
+        l.setId(id);
+        plant.setLearner(l);
         this.plantRepository.save(plant);
+
         return plant;
     }
-
 
     /**
      * Modifie une plante en bdd par son id
@@ -82,6 +85,5 @@ public class PlantService {
         this.plantRepository.delete(plant);
         return plant;
     }
-
 
 }
