@@ -1,12 +1,8 @@
 package fr.java.spring.begreen.App.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.java.spring.begreen.App.model.Learner;
-import fr.java.spring.begreen.App.model.Photo;
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.PlantRepository;
 
@@ -15,6 +11,11 @@ public class PlantService {
 
     @Autowired PlantRepository plantRepository;
 
+    /**
+     * Récupère la liste de plantes en bdd
+     * @return
+     * @throws Exception
+     */
     public Iterable<Plant> findAll() throws Exception {
 
         Iterable<Plant> plants = this.plantRepository.findAll();
@@ -22,6 +23,12 @@ public class PlantService {
         return plants;
     }
 
+    /**
+     * Récupère une plante par son id de la bdd
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Plant findById(Long id) throws Exception {
 
         Plant plant = this.plantRepository.findById(id).get();
@@ -29,19 +36,29 @@ public class PlantService {
         return plant;
     }
 
+    /**
+     * Crée une plante en bdd
+     * @param plant
+     * @return
+     * @throws Exception
+     */
     public Plant postOne(Plant plant) throws Exception {
+        // plant.getPhotos().iterator().forEachRemaining(photo -> {
+        //     photo.setPlant(plant);
+        // });
 
         if(plant == null) throw new Exception();
-        plant.getPhotos().iterator().forEachRemaining(photo -> {
-            photo.setPlant(plant);
-        });
-
         this.plantRepository.save(plant);
         return plant;
     }
 
 
-
+    /**
+     * Modifie une plante en bdd par son id
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Plant editOne(Long id) throws Exception {
 
         Plant plant = this.plantRepository.findById(id).get();
@@ -52,6 +69,12 @@ public class PlantService {
         return plant;
     }
 
+    /**
+     * Supprime une plante par son id
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Plant deleteOne(Long id) throws Exception {
 
         Plant plant = this.plantRepository.findById(id).get();

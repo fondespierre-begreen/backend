@@ -16,11 +16,22 @@ public class SerieController {
     
     @Autowired SerieService serieService;
 
+    /**
+     * Récupère les series
+     * @return
+     * @throws Exception
+     */
     @GetMapping(path = "/series")
     public Iterable<Serie> getSeries() throws Exception {
         return this.serieService.findAll();
     }
 
+    /**
+     * Crée une serie
+     * @param serie
+     * @return
+     * @throws Exception
+     */
     @PostMapping(path = "/series")
     public Serie postSerie(@RequestBody Serie serie) throws Exception{
         return this.serieService.postOne(serie);

@@ -12,7 +12,7 @@ public class LearnerService {
     @Autowired LearnerRepository learnerRepository;
 
     /**
-     * Get all learners from bdd
+     * Récupère la listes des apprenants en bdd
      * @return
      * @throws Exception
      */
@@ -24,7 +24,7 @@ public class LearnerService {
     }
 
     /**
-     * Find learner by id in bdd
+     * Récupère un apprenant par son id en bdd
      * @return
      * @throws Exception
      */
@@ -35,15 +35,19 @@ public class LearnerService {
         return learner;
     }
 
+    /**
+     * Crée un nouvelle utilisateur
+     * @param learner
+     * @return
+     * @throws Exception
+     */
     public Learner postOne(Learner learner) throws Exception {
+        // learner.getPlants().iterator().forEachRemaining(plant -> {
+            //     plant.setLearner(learner);
+            // });
+            
         if(learner == null) throw new Exception();
-        
-        
-        //To service then
-        learner.getPlants().iterator().forEachRemaining(plant -> {
-            plant.setLearner(learner);
-        });
-        
+        //ici faire les modifications sur l'apprenant
         this.learnerRepository.save(learner);
         
         return learner;

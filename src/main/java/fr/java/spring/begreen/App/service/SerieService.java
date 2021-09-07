@@ -12,7 +12,7 @@ public class SerieService {
     @Autowired SerieRepository serieRepository;
 
     /**
-     * Find list of serie
+     * Récupère toute les serie de la bdd
      * @return
      * @throws Exception
      */
@@ -23,7 +23,7 @@ public class SerieService {
     }
 
     /**
-     * Find a serie by id
+     * Récupère une serie par son id de la bdd
      * @param id
      * @return
      * @throws Exception
@@ -36,24 +36,24 @@ public class SerieService {
     }
 
     /**
-     * Create a serie
+     * Crée une serie en bdd
      * @param serie
      * @return
      * @throws Exception
      */
     public Serie postOne(Serie serie) throws Exception{
-        if(serie == null) throw new Exception();
-        serie.getQuestions().iterator().forEachRemaining(question -> {
-            question.setSerie(serie);
-        });
+        // serie.getQuestions().iterator().forEachRemaining(question -> {
+        //     question.setSerie(serie);
+        // });
 
+        if(serie == null) throw new Exception();
         this.serieRepository.save(serie);
         return serie;
 
     }
 
     /**
-     * Edit a serie
+     * Modifi la serie par son id
      * @param id
      * @return
      * @throws Exception
@@ -61,14 +61,14 @@ public class SerieService {
     public Serie editOne(Long id) throws Exception{
         Serie serie = this.serieRepository.findById(id).get();
         if(id == null || serie == null) throw new Exception();
-        //your edits for serie object
+        //les modifications a faire ici.
         this.serieRepository.save(serie);
 
         return serie;
     }
 
     /**
-     * Delete a serie
+     * Supprime une serie par son id
      * @param id
      * @return
      * @throws Exception
