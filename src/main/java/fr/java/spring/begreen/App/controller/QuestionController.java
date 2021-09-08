@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.java.spring.begreen.App.model.Question;
-import fr.java.spring.begreen.App.repository.QuestionRepository;
 import fr.java.spring.begreen.App.service.QuestionService;
 
 @RestController
