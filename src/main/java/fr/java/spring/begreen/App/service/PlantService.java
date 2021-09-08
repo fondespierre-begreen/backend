@@ -8,12 +8,14 @@ import org.springframework.stereotype.Service;
 import fr.java.spring.begreen.App.model.Learner;
 import fr.java.spring.begreen.App.model.Photo;
 import fr.java.spring.begreen.App.model.Plant;
+import fr.java.spring.begreen.App.repository.LearnerRepository;
 import fr.java.spring.begreen.App.repository.PlantRepository;
 
 @Service
 public class PlantService {
 
     @Autowired PlantRepository plantRepository;
+    @Autowired LearnerRepository learnerRepository;
 
     /**
      * Récupère la liste de plantes en bdd
@@ -41,16 +43,15 @@ public class PlantService {
     }
 
     /**
-     * Crée une plante en bdd
-     * @param plant
+     * Crée une plante en bdd avec photo
+     * @param plant, id = user_id
      * @return
      * @throws Exception
      */
     public Plant postOne(Plant plant, Long id) throws Exception {
         if(plant == null || id == null) throw new Exception();
-        Learner l = new Learner();
-        l.setId(id);
-        plant.setLearner(l);
+        Learner learner = this.learnerRepository.findById(id).get();
+        plant.setLearner(learner);
         this.plantRepository.save(plant);
 
         return plant;
