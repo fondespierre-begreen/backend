@@ -1,12 +1,9 @@
 package fr.java.spring.begreen.App.service;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.java.spring.begreen.App.model.Learner;
-import fr.java.spring.begreen.App.model.Photo;
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.LearnerRepository;
 import fr.java.spring.begreen.App.repository.PlantRepository;
@@ -63,11 +60,8 @@ public class PlantService {
      * @return
      * @throws Exception
      */
-    public Plant editOne(Long id) throws Exception {
-
-        Plant plant = this.plantRepository.findById(id).get();
-        if(plant == null || id == null) throw new Exception();
-        //add your edits to plant object (exemple : plant.setDescription("etc"))
+    public Plant editOne(Plant plant) throws Exception {
+        if(plant == null) throw new Exception();
         this.plantRepository.save(plant);
 
         return plant;

@@ -1,24 +1,18 @@
 package fr.java.spring.begreen.App.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.java.spring.begreen.App.model.Photo;
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.PlantRepository;
 import fr.java.spring.begreen.App.service.PlantService;
@@ -74,9 +68,9 @@ public class PlantController {
      * @return
      * @throws Exception
      */
-    @PutMapping(path = "/plants/edit/{id}")
-    public Plant editPlant(@PathVariable Long id) throws Exception {
-        return this.plantService.editOne(id);
+    @PatchMapping(path = "/plants/edit")
+    public Plant editPlant(@RequestBody Plant plant) throws Exception {
+        return this.plantService.editOne(plant);
     }
 
     /**

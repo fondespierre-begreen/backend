@@ -3,6 +3,7 @@ package fr.java.spring.begreen.App.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,17 @@ public class SerieController {
     @GetMapping(path = "/series")
     public Iterable<Serie> getSeries() throws Exception {
         return this.serieService.findAll();
+    }
+
+    /**
+     * Crée une serie
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(path = "/series/{id}")
+    public Serie getOneSerie(@PathVariable Long id) throws Exception{
+        return this.serieService.findById(id);
     }
 
     /**

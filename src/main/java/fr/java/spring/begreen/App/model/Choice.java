@@ -34,6 +34,7 @@ public class Choice {
     @JsonIgnore
     private Question question;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "choice", cascade = CascadeType.ALL) //fk_answer
     private List<Answer> answers = new ArrayList<Answer>();
 
