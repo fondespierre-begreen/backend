@@ -1,9 +1,17 @@
 package fr.java.spring.begreen.App.service;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import fr.java.spring.begreen.App.model.Learner;
+import fr.java.spring.begreen.App.model.Photo;
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.LearnerRepository;
 import fr.java.spring.begreen.App.repository.PlantRepository;
@@ -46,9 +54,17 @@ public class PlantService {
      * @throws Exception
      */
     public Plant postOne(Plant plant, Long id) throws Exception {
+
+        String folder = "/root/app/app/src/main/java/fr/java/spring/begreen/App/assets/";
+
         if(plant == null || id == null) throw new Exception();
         Learner learner = this.learnerRepository.findById(id).get();
         plant.setLearner(learner);
+
+        byte[] bytes = plant.getFile().getBytes();
+        Path path = Paths.get(folder+ plant.getFile().getOriginalFilename());
+        Files.write(path, bytes);
+    
         this.plantRepository.save(plant);
 
         return plant;
