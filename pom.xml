@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>fr.java.spring.begreen</groupId>
-	<artifactId>begreen</artifactId>
+	<artifactId>App</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>begreen</name>
+	<name>App</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

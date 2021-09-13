@@ -50,14 +50,8 @@ public class Plant {
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "plant")
     private List<Choice> choices = new ArrayList<Choice>();
 
+    @JsonIgnore
     @Transient
     private MultipartFile file;
-
-    // public void setFile(List<MultipartFile> files){
-    //     files.iterator().forEachRemaining(img ->{
-    //         Photo photo = new Photo();
-    //         photo.setUrl(img.getOriginalFilename());
-    //     });
-    // }
 
 }

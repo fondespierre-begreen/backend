@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import fr.java.spring.begreen.App.model.Learner;
 import fr.java.spring.begreen.App.model.Photo;
@@ -54,17 +53,26 @@ public class PlantService {
      * @throws Exception
      */
     public Plant postOne(Plant plant, Long id) throws Exception {
-
-        String folder = "/root/app/app/src/main/java/fr/java/spring/begreen/App/assets/";
-
         if(plant == null || id == null) throw new Exception();
+
+        String uri = "http://localhost:9090";
+        String folder = "src/main/resources/static/images/";
+        
         Learner learner = this.learnerRepository.findById(id).get();
         plant.setLearner(learner);
 
         byte[] bytes = plant.getFile().getBytes();
-        Path path = Paths.get(folder+ plant.getFile().getOriginalFilename());
+        Path path = Paths.get(folder + plant.getFile().getOriginalFilename());
         Files.write(path, bytes);
-    
+
+        Photo p = new Photo();
+        String url = uri + path.toString().substring(25, path.toString().length());
+        p.setPlant(plant);
+        p.setUrl(url);
+        ArrayList<Photo> arr = new ArrayList<Photo>();
+        arr.add(p);
+        plant.setPhotos(arr);
+
         this.plantRepository.save(plant);
 
         return plant;
@@ -96,5 +104,4 @@ public class PlantService {
         this.plantRepository.delete(plant);
         return plant;
     }
-
 }

@@ -1,0 +1,395 @@
+
+[
+    {
+        "name": "Iris",
+        "latin":"Iris germanica"
+    },
+    {
+        "name": "Jasmin d’hiver",
+        "latin":"Jasminum nudiflorum"
+    },   
+    {
+        "name": "Jasmin étoilé",
+        "latin":"Trachelospermum jasminoïdes"
+    },   
+    {
+        "name": "Jujubier",
+        "latin":"Ziziphus zizyphus"
+    },   
+    {
+        "name": "Kaki",
+        "latin":"Diospyros kaki"
+    },   
+    {
+        "name": "Lagerstroemia",
+        "latin":"Lagerstroemia indica"
+    } ,  
+    {
+        "name": "Laurier palme",
+        "latin":"Prunus laurocerasus"
+    },   
+    {
+        "name": "Laurier rose",
+        "latin":"Nerium oleander"
+    },  
+    {
+        "name": "Laurier sauce",
+        "latin":"Laurus nobilis"
+    },
+    {
+        "name":"Laurier tin",
+        "latin":"Viburnum tinus"
+    },
+    {
+        "name":"Lavande",
+        "latin":"Lavandula X intermedia"
+    },
+    {
+        "name":"Lierre",
+        "latin":"Hedera  helix"
+    },
+    {
+        "name":"Lierre panaché vert blanc",
+        "latin":"Hedera helix « glacier »"
+    },
+    {
+        "name":"Lilas",
+        "latin":"Syringa vulgaris"
+    },
+    {
+        "name":"Lippia",
+        "latin":"Lippia nodiflora"
+    },
+    {
+        "name":"Luzerne arborescente",
+        "latin":"Medicago arborescens"
+    },
+    {
+        "name":"Luzerne d’Arabie",
+        "latin":"Medicago arabica"
+    },
+    {
+        "name":"Luzerne cultivée",
+        "latin":"Medicago sativa"
+    },
+    {
+        "name":"Mahonia, vigne de l’Orégon",
+        "latin":"Mahonia x media charity"
+    },
+    {
+        "name":"Massette",
+        "latin":"Typha latifolia"
+    },
+    {
+        "name":"Melia",
+        "latin":"Melia azedarach"
+    },
+    {
+        "name":"Micocoulier",
+        "latin":"Celtis australis"
+    },
+    {
+        "name":"Millepertuis",
+        "latin":"Hypericum calycinum"
+    },
+    {
+        "name":"Molène à feuilles sinuées",
+        "latin":"Verbascum sinuatum"
+    },
+    {
+        "name":"Monnaie du pape",
+        "latin":"Lunaria annua"
+    },
+    {
+        "name":"Mure sans épines",
+        "latin":"fruticosus Triple Crown"
+    },
+    {
+        "name":"Mûrier blanc",
+        "latin":"Morus alba"
+    },
+    {
+        "name":"Mûrier platane",
+        "latin":"Morus kagayamae"
+    },
+    {
+        "name":"Mûrier de Chine",
+        "latin":"Broussonetia papyrifera"
+    },
+    {
+        "name":"Myrte",
+        "latin":"Myrtus communis"
+    },
+    {
+        "name":"Néflier du Japon",
+        "latin":"Eriobotrya japonica"
+    },
+    {
+        "name":"Néflier d'Allemagne",
+        "latin":"Mespilus germanica"
+    },
+    {
+        "name":"Nerprun alaterne",
+        "latin":"Rhamnus alaternus"
+    },
+    {
+        "name":"Noisetier commun",
+        "latin":"Corylus avellana"
+    },
+    {
+        "name":"Noisetier pourpre",
+        "latin":"Corylus avellana atropurpurea"
+    },
+    {
+        "name":"Olivier",
+        "latin":"Olea europaea"
+    },
+    {
+        "name":"Ophrys jaune",
+        "latin":"Ophrys lutea"
+    },
+    {
+        "name":"Oranger amer (bigaradier)",
+        "latin":"Citrus  X auriantum"
+    },
+    {
+        "name":"Oreilles d’ours",
+        "latin":"Stachys byzantina"
+    },
+    {
+        "name":"Orme champêtre",
+        "latin":"Ulmus campestris"
+    },
+    {
+        "name":"Palliure",
+        "latin":"Palliura epina-christi"
+    },
+    {
+        "name":"Passiflore",
+        "latin":"Passiflora caerulea"
+    },
+    {
+        "name":"Pêcher",
+        "latin":"Prunus persica"
+    },
+    {
+        "name":"Perovskia",
+        "latin":"Perovskia atriplicifolia"
+    },
+    {
+        "name":"Pervenche",
+        "latin":"Vinca minor"
+    },
+    {
+        "name":"Pervenche panachée",
+        "latin":"Vinca minor aureovariegata"
+    },
+    {
+        "name":"Peuplier",
+        "latin":"Populus sp"
+    },
+    {
+        "name":"Phlomis",
+        "latin":"Phlomis fruticosa"
+    },
+    {
+        "name":"Phlomis pourpre",
+        "latin":"Phlomis purpurea"
+    },
+    {
+        "name":"Physalis du Pérou",
+        "latin":"Physalis peruviania"
+    },
+    {
+        "name":"Pin d’Alep",
+        "latin":"Pinus halepensis"
+    },
+    {
+        "name":"Pin parasol",
+        "latin":"Pinus pinaster"
+    },
+    {
+        "name":"Pistachier lentisque",
+        "latin":"Pistacia lentiscus"
+    },
+    {
+        "name":"Pistachier térébinthe",
+        "latin":"Pistacia terebinthus"
+    },
+    {
+        "name":"Pittosporum tobira",
+        "latin":"Pittosporum tobira « Nana »"
+    },
+    {
+        "name":"Photinia X fraserii « Red robin »",
+        "latin":"Photinia X fraserii « Red robin »"
+    },
+    {
+        "name":"Phormium",
+        "latin":"Phormium sp"
+    },
+    {
+        "name":"Physalis du Pérou",
+        "latin":"Physalis peruviana"
+    },
+    {
+        "name":"Physalis amour en cage",
+        "latin":"Physalis alkekenge"
+    },
+    {
+        "name":"Plaqueminier",
+        "latin":"Diospyros kaki"
+    },
+    {
+        "name":"Platane commun",
+        "latin":"Platanus X acerifolia"
+    },
+    {
+        "name":"Plumbago",
+        "latin":"Plumbago sp"
+    },
+    {
+        "name":"Prunellier",
+        "latin":"Prunella vulgaris"
+    },
+    {
+        "name":"Prunier myrobolan",
+        "latin":"Prunus cerasifera"
+    },
+    {
+        "name":"Robinier pseudo-acacia",
+        "latin":"Robinia pseudoacacia"
+    },
+    {
+        "name":"Romarin",
+        "latin":"Rosmarinus officinalis"
+    },
+    {
+        "name":"Rose trémière",
+        "latin":"Alcea rosea"
+    },
+    {
+        "name":"Rosier de Banks",
+        "latin":"Rosa banksiae"
+    },
+    {
+        "name":"Santoline",
+        "latin":"Santolina chamaecyparissus"
+    },
+    {
+        "name":"Savonnier de Chine",
+        "latin":"Koelreuteria paniculata"
+    },
+    {
+        "name":"Sauge arbustive",
+        "latin":"Salvia microphylla"
+    },
+    {
+        "name":"Sauge de Jérusalem",
+        "latin":"Phlomis fruticosa"
+    },
+    {
+        "name":"Sauge officinale",
+        "latin":"Salvia officinalis"
+    },
+    {
+        "name":"Sauge bleue du Mexique",
+        "latin":"Salvia chamaedryoïdes"
+    },
+    {
+        "name":"Sedum de Nice",
+        "latin":"Sedum sediforme"
+    },
+    {
+        "name":"Seringat",
+        "latin":"Philadelphus coronarius"
+    },
+    {
+        "name":"Solanum faux jasmin",
+        "latin":"Solanum jasminoides"
+    },
+    {
+        "name":"Solanum arbre à gentiane",
+        "latin":"Solanum rantonnetii"
+    },
+    {
+        "name":"Sophora",
+        "latin":"Sophora japonica"
+    },
+    {
+        "name":"Souci de jardin",
+        "latin":"Calendula officinalis"
+    },
+    {
+        "name":"Souci des champs",
+        "latin":"Calendula arvensis"
+    },
+    {
+        "name":"Spirée blanche",
+        "latin":"Spiraea thunbergii"
+    },
+    {
+        "name":"Spirée Van Houttei",
+        "latin":"Spiraea  vanhouttei"
+    },
+    {
+        "name":"Spirée du Japon",
+        "latin":"Spiraea japonica"
+    },
+    {
+        "name":"Stipa",
+        "latin":"Stipa tenuifolia"
+    },
+    {
+        "name":"Sureau",
+        "latin":"Sambucus nigra"
+    },
+    {
+        "name":"Tamaris de printemps",
+        "latin":"Tamaris tetrandra"
+    },
+    {
+        "name":"Teucrium",
+        "latin":"Teucrium fruticans"
+    },
+    {
+        "name":"Teucrium",
+        "latin":"Teucrium chamaedrys"
+    },
+    {
+        "name":"Trèfle blanc",
+        "latin":"Trifolium repens"
+    },
+    {
+        "name":"Troëne du Japon",
+        "latin":"Ligustrum japonica"
+    },
+    {
+        "name":"Tilleul à petites feuilles",
+        "latin":"Tilia cordata"
+    },
+    {
+        "name":"Thym",
+        "latin":"Thymus vulgaris"
+    },
+    {
+        "name":"Tulbaghia",
+        "latin":"Tulbaghia violacea"
+    },
+    {
+        "name":"Verveine citronnelle",
+        "latin":"Aloisya triphylla"
+    },
+    {
+        "name":"Véronique arbustive",
+        "latin":"Hebe sp"
+    },
+    {
+        "name":"Véronique de Perse",
+        "latin":"Veronica persica"
+    },
+    {
+        "name":"Yucca",
+        "latin":"Yucca  gloriosa"
+    }
+]
