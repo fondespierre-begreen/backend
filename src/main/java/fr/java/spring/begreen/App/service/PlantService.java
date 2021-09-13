@@ -104,4 +104,13 @@ public class PlantService {
         this.plantRepository.delete(plant);
         return plant;
     }
+
+
+    /**
+     * Recherche la derniere plante dans la bdd
+     */
+    public Long getLastPlant(){
+       Iterable<Plant> plants = this.plantRepository.findAll();
+       return plants.spliterator().getExactSizeIfKnown();
+    }
 }

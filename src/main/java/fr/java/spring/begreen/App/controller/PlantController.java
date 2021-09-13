@@ -2,6 +2,7 @@ package fr.java.spring.begreen.App.controller;
 
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
+import javax.persistence.SequenceGenerators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -85,6 +86,12 @@ public class PlantController {
     @PostMapping(path = "/plants/add/{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public Plant createPlant(@ModelAttribute Plant plant, @RequestPart MultipartFile file, @PathVariable Long id) throws Exception {
         return this.plantService.postOne(plant, id);
+    }
+
+
+    @GetMapping(path = "/lastPlant")
+    public Long getLastId(){
+        return this.plantService.getLastPlant();
     }
     
 }
