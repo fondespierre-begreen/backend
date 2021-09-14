@@ -1,5 +1,6 @@
 package fr.java.spring.begreen.App.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,21 +16,19 @@ import lombok.Data;
 public class Answer {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     //Learner unique answer.
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Choice choice;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Learner learner;
 
-    
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Question question;
 
 

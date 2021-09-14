@@ -90,7 +90,7 @@ public class PlantController {
 
 
     @GetMapping(path = "/lastPlant")
-    public Long getLastId(){
+    public Integer getLastId(){
         return this.plantService.getLastPlant();
     }
     

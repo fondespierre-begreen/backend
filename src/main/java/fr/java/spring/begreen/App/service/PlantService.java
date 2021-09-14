@@ -61,14 +61,12 @@ public class PlantService {
         Learner learner = this.learnerRepository.findById(id).get();
         plant.setLearner(learner);
 
-        byte[] bytes = plant.getFile().getBytes();
         Path path = Paths.get(folder + plant.getFile().getOriginalFilename());
-        Files.write(path, bytes);
-
+        plant.getFile().transferTo(path);
+        
         Photo p = new Photo();
-        String url = uri + path.toString().substring(25, path.toString().length());
         p.setPlant(plant);
-        p.setUrl(url);
+        p.setUrl(uri + "/images/" + plant.getFile().getOriginalFilename());
         ArrayList<Photo> arr = new ArrayList<Photo>();
         arr.add(p);
         plant.setPhotos(arr);
@@ -109,8 +107,13 @@ public class PlantService {
     /**
      * Recherche la derniere plante dans la bdd
      */
-    public Long getLastPlant(){
+    public Integer getLastPlant(){
        Iterable<Plant> plants = this.plantRepository.findAll();
-       return plants.spliterator().getExactSizeIfKnown();
+       
+       ArrayList arr = new ArrayList<>();
+       plants.spliterator().forEachRemaining(plant -> {
+            arr.add(plant);
+        });
+        return arr.size();
     }
 }

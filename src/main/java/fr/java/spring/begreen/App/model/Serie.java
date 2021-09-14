@@ -22,7 +22,7 @@ public class Serie {
     private Long id;
     private String total;
 
-    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "serie")
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "serie")
     private List<Question> questions = new ArrayList<Question>();
 
 }

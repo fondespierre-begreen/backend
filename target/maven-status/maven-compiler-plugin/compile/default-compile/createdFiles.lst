@@ -14,7 +14,6 @@ fr/java/spring/begreen/App/model/Choice.class
 fr/java/spring/begreen/App/service/QuestionService.class
 fr/java/spring/begreen/App/model/Plant.class
 fr/java/spring/begreen/App/repository/QuestionRepository.class
-fr/java/spring/begreen/App/WebConfig/WebConfig.class
 fr/java/spring/begreen/App/model/Serie.class
 fr/java/spring/begreen/App/model/Photo.class
 fr/java/spring/begreen/App/repository/PhotoRepository.class

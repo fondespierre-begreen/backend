@@ -29,10 +29,10 @@ public class Question {
     @JsonIgnore
     private Serie serie;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Plant plant;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.ALL, CascadeType.MERGE})
     private List<Choice> choices = new ArrayList<Choice>();
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)

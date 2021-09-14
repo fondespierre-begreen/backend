@@ -27,15 +27,15 @@ public class Choice {
     private String description;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE})
     private Plant plant;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE})
     @JsonIgnore
     private Question question;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "choice", cascade = CascadeType.ALL) //fk_answer
+    @OneToMany(mappedBy = "choice", cascade = {CascadeType.ALL, CascadeType.MERGE}) //fk_answer
     private List<Answer> answers = new ArrayList<Answer>();
 
 

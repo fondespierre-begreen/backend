@@ -36,7 +36,7 @@ public class Plant {
     private String description;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "plant", optional = true)
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "plant")
     private Question question;
     
     @JsonIgnore
