@@ -86,17 +86,16 @@ public class PlantService {
      */
     public Plant editOne(Plant plant) throws Exception {
         if(plant == null) throw new Exception();
-
-        Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
-        plant.getFile().transferTo(path);
-
-        Photo p = new Photo();
-        p.setPlant(plant);
-        p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
-        ArrayList<Photo> arr = new ArrayList<Photo>();
-        arr.add(p);
-        plant.setPhotos(arr);
-
+        if(plant.getFile() != null){
+            Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
+            plant.getFile().transferTo(path);
+            Photo p = new Photo();
+            p.setPlant(plant);
+            p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
+            ArrayList<Photo> arr = new ArrayList<Photo>();
+            arr.add(p);
+            plant.setPhotos(arr);
+        }
         this.plantRepository.save(plant);
 
         return plant;

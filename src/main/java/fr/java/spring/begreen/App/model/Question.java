@@ -11,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.servlet.annotation.HttpConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.springframework.validation.annotation.Validated;
 
 import lombok.Data;
 
@@ -38,5 +41,10 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Answer> answers = new ArrayList<Answer>();
 
+    private void setChoices(List<Choice> choices){
+        for(int i = 0; i < 4; i++) {
+            choices.add(this.choices.get(i));
+        }
+    }
 
 }
