@@ -1,15 +1,20 @@
 package fr.java.spring.begreen.App.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.model.Serie;
 import fr.java.spring.begreen.App.repository.SerieRepository;
+import fr.java.spring.begreen.App.repository.PlantRepository;
 
 @Service
 public class SerieService {
     
     @Autowired SerieRepository serieRepository;
+    @Autowired PlantRepository planteRepository;
 
     /**
      * Récupère toute les serie de la bdd
@@ -42,11 +47,28 @@ public class SerieService {
      * @throws Exception
      */
     public Serie postOne(Serie serie) throws Exception{
-        // serie.getQuestions().iterator().forEachRemaining(question -> {
-        //     question.setSerie(serie);
-        // });
 
         if(serie == null) throw new Exception();
+        serie.getQuestions().iterator().forEachRemaining(q -> {
+            q.setSerie(serie);
+            Long id = q.getPlant().getId();
+            Plant plant = this.planteRepository.findById(id).get();
+            q.getPlant().getPhotos().iterator().forEachRemaining(ph -> {
+                ph.setPlant(q.getPlant());
+            });
+            q.setPlant(plant);
+            q.getChoices().iterator().forEachRemaining(c -> {
+                c.setPlant(plant);
+                c.setQuestion(q);
+                q.getAnswers().iterator().forEachRemaining(a -> { 
+                    a.setQuestion(q);
+                    a.setChoice(c);
+                    a.setLearner(plant.getLearner());
+                });
+            });
+            
+        });
+        
         this.serieRepository.save(serie);
         return serie;
 
