@@ -21,6 +21,9 @@ public class PlantService {
     @Autowired PlantRepository plantRepository;
     @Autowired LearnerRepository learnerRepository;
 
+    private String uri = "http://localhost:9090";
+    private String folder = "src/main/resources/static/images/";
+
     /**
      * Récupère la liste de plantes en bdd
      * @return
@@ -55,18 +58,17 @@ public class PlantService {
     public Plant postOne(Plant plant, Long id) throws Exception {
         if(plant == null || id == null) throw new Exception();
 
-        String uri = "http://localhost:9090";
-        String folder = "src/main/resources/static/images/";
+
         
         Learner learner = this.learnerRepository.findById(id).get();
         plant.setLearner(learner);
 
-        Path path = Paths.get(folder + plant.getFile().getOriginalFilename());
+        Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
         plant.getFile().transferTo(path);
         
         Photo p = new Photo();
         p.setPlant(plant);
-        p.setUrl(uri + "/images/" + plant.getFile().getOriginalFilename());
+        p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
         ArrayList<Photo> arr = new ArrayList<Photo>();
         arr.add(p);
         plant.setPhotos(arr);
@@ -84,6 +86,17 @@ public class PlantService {
      */
     public Plant editOne(Plant plant) throws Exception {
         if(plant == null) throw new Exception();
+
+        Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
+        plant.getFile().transferTo(path);
+
+        Photo p = new Photo();
+        p.setPlant(plant);
+        p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
+        ArrayList<Photo> arr = new ArrayList<Photo>();
+        arr.add(p);
+        plant.setPhotos(arr);
+
         this.plantRepository.save(plant);
 
         return plant;

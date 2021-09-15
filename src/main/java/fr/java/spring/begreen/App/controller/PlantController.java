@@ -72,8 +72,8 @@ public class PlantController {
      * @return
      * @throws Exception
      */
-    @PatchMapping(path = "/plants/edit")
-    public Plant editPlant(@RequestBody Plant plant) throws Exception {
+    @PatchMapping(path = "/plants/edit", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public Plant editPlant(@ModelAttribute Plant plant, @RequestPart MultipartFile file) throws Exception {
         return this.plantService.editOne(plant);
     }
 
