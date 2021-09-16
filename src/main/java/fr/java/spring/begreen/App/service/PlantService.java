@@ -86,11 +86,9 @@ public class PlantService {
      */
     public Plant editOne(Plant plant) throws Exception {
         if(plant == null) throw new Exception();
-
         if(plant.getFile() != null){
             Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
             plant.getFile().transferTo(path);
-    
             Photo p = new Photo();
             p.setPlant(plant);
             p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
@@ -98,7 +96,6 @@ public class PlantService {
             arr.add(p);
             plant.setPhotos(arr);
         }
-        
         this.plantRepository.save(plant);
 
         return plant;
