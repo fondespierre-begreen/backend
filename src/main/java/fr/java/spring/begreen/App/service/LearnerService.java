@@ -37,23 +37,4 @@ public class LearnerService {
         
         return learner;
     }
-
-    // /**
-    //  * Crée un nouvelle utilisateur
-    //  * @param learner
-    //  * @return
-    //  * @throws Exception
-    //  */
-    // public List<Plant> postPlantByUserId(Plant plant,Long id) throws Exception {
-    //     if(id == null) throw new Exception();
-
-    //     Learner learner = this.learnerRepository.findById(id).get();
-    //     List<Plant> oldList = learner.getPlants();
-    //     oldList.add(plant);
-
-    //     this.plantRepository.saveAll(oldList);
-
-    //     return oldList;
-        
-    // }
 }

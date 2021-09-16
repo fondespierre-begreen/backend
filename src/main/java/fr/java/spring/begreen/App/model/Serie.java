@@ -1,6 +1,7 @@
 package fr.java.spring.begreen.App.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,8 +21,10 @@ public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String total;
 
+    // private Date createdAt;
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "serie")
     private List<Question> questions = new ArrayList<Question>();
 

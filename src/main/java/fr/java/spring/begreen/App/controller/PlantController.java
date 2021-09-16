@@ -3,9 +3,11 @@ package fr.java.spring.begreen.App.controller;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.SequenceGenerators;
+import javax.print.attribute.standard.Media;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -72,8 +74,8 @@ public class PlantController {
      * @return
      * @throws Exception
      */
-    @PatchMapping(path = "/plants/edit", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public Plant editPlant(@ModelAttribute Plant plant, @RequestPart MultipartFile file) throws Exception {
+    @PatchMapping(path = "/plants/edit", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE})
+    public Plant editPlant(@ModelAttribute Plant plant, @RequestPart(required = false) MultipartFile file) throws Exception {
         return this.plantService.editOne(plant);
     }
 
@@ -83,12 +85,15 @@ public class PlantController {
      * @return
      * @throws Exception
      */
-    @PostMapping(path = "/plants/add/{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public Plant createPlant(@ModelAttribute Plant plant, @RequestPart MultipartFile file, @PathVariable Long id) throws Exception {
+    @PostMapping(path = "/plants/add/{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.TEXT_PLAIN_VALUE})
+    public Plant createPlant(@ModelAttribute Plant plant, @RequestPart(required = false) MultipartFile file, @PathVariable Long id) throws Exception {
         return this.plantService.postOne(plant, id);
     }
 
-
+    /**
+     * Récupère le derniere id de mes plantes
+     * @return
+     */
     @GetMapping(path = "/lastPlant")
     public Integer getLastId(){
         return this.plantService.getLastPlant();

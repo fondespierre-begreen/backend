@@ -101,4 +101,26 @@ public class SerieService {
 
         return serie;
     }
+
+    public Serie createSerie(Serie serie) throws Exception {
+        if(serie == null) throw new Exception();
+
+        serie.getQuestions().iterator().forEachRemaining(q -> {
+            q.setSerie(serie);
+            Long id = q.getPlant().getId();
+            Plant plant = this.planteRepository.findById(id).get();
+            q.getPlant().getPhotos().iterator().forEachRemaining(ph -> {
+                ph.setPlant(q.getPlant());
+            });
+            q.setPlant(plant);
+            q.getChoices().iterator().forEachRemaining(c -> {
+                c.setPlant(plant);
+                c.setQuestion(q);
+            });
+            
+        });
+        
+        this.serieRepository.save(serie);
+        return serie;
+    }
 }

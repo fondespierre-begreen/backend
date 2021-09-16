@@ -58,21 +58,21 @@ public class PlantService {
     public Plant postOne(Plant plant, Long id) throws Exception {
         if(plant == null || id == null) throw new Exception();
 
-
+        if(plant.getFile() != null){
+            
+            Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
+            plant.getFile().transferTo(path);
+            
+            Photo p = new Photo();
+            p.setPlant(plant);
+            p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
+            ArrayList<Photo> arr = new ArrayList<Photo>();
+            arr.add(p);
+            plant.setPhotos(arr);
+        }
         
         Learner learner = this.learnerRepository.findById(id).get();
         plant.setLearner(learner);
-
-        Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
-        plant.getFile().transferTo(path);
-        
-        Photo p = new Photo();
-        p.setPlant(plant);
-        p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
-        ArrayList<Photo> arr = new ArrayList<Photo>();
-        arr.add(p);
-        plant.setPhotos(arr);
-
         this.plantRepository.save(plant);
 
         return plant;
@@ -87,16 +87,18 @@ public class PlantService {
     public Plant editOne(Plant plant) throws Exception {
         if(plant == null) throw new Exception();
 
-        Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
-        plant.getFile().transferTo(path);
-
-        Photo p = new Photo();
-        p.setPlant(plant);
-        p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
-        ArrayList<Photo> arr = new ArrayList<Photo>();
-        arr.add(p);
-        plant.setPhotos(arr);
-
+        if(plant.getFile() != null){
+            Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
+            plant.getFile().transferTo(path);
+    
+            Photo p = new Photo();
+            p.setPlant(plant);
+            p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
+            ArrayList<Photo> arr = new ArrayList<Photo>();
+            arr.add(p);
+            plant.setPhotos(arr);
+        }
+        
         this.plantRepository.save(plant);
 
         return plant;

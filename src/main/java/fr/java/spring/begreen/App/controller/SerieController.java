@@ -39,7 +39,7 @@ public class SerieController {
     }
 
     /**
-     * Crée une serie
+     * Passer une serie 
      * @param serie
      * @return
      * @throws Exception
@@ -47,6 +47,17 @@ public class SerieController {
     @PostMapping(path = "/series")
     public Serie postSerie(@RequestBody Serie serie) throws Exception{
         return this.serieService.postOne(serie);
+    }
+
+    /**
+     * Crée une serie
+     * @param serie
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(path = "/createSerie")
+    public Serie createSerie (@RequestBody Serie serie) throws Exception{
+        return this.serieService.createSerie(serie);
     }
     
     
