@@ -31,7 +31,7 @@ public class PlantService {
      */
     public Iterable<Plant> findAll() throws Exception {
 
-        Iterable<Plant> plants = this.plantRepository.findAll();
+        Iterable<Plant> plants = this.plantRepository.getPublicPlants();
         if(!plants.iterator().hasNext()) throw new Exception();
         return plants;
     }
@@ -84,7 +84,7 @@ public class PlantService {
      * @return
      * @throws Exception
      */
-    public Plant editOne(Plant plant) throws Exception {
+    public Plant editOne(Plant plant, long id) throws Exception {
         if(plant == null) throw new Exception();
 
         if(plant.getFile() != null){
@@ -97,9 +97,18 @@ public class PlantService {
             ArrayList<Photo> arr = new ArrayList<Photo>();
             arr.add(p);
             plant.setPhotos(arr);
+
+            this.plantRepository.save(plant);
+        } else {
+
+            Plant p = this.plantRepository.findById(plant.getId()).get();
+            plant.setPhotos(p.getPhotos());
+            
+            Learner learner = this.learnerRepository.findById(id).get();
+            plant.setLearner(learner);
+            this.plantRepository.save(plant);
         }
-        
-        this.plantRepository.save(plant);
+    
 
         return plant;
     }

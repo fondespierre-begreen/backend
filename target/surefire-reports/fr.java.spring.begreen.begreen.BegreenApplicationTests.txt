@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: fr.java.spring.begreen.begreen.BegreenApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.596 s <<< FAILURE! - in fr.java.spring.begreen.begreen.BegreenApplicationTests
-fr.java.spring.begreen.begreen.BegreenApplicationTests  Time elapsed: 0.593 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.662 s <<< FAILURE! - in fr.java.spring.begreen.begreen.BegreenApplicationTests
+fr.java.spring.begreen.begreen.BegreenApplicationTests  Time elapsed: 0.657 s  <<< ERROR!
 java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test
 

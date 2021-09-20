@@ -39,7 +39,7 @@ public class SerieService {
     }
 
     /**
-     * Crée une serie en bdd
+     * Lors qu'on passe une serie en bdd
      * @param serie
      * @return
      * @throws Exception
@@ -51,16 +51,18 @@ public class SerieService {
             q.setSerie(serie);
             Long id = q.getPlant().getId();
             Plant plant = this.planteRepository.findById(id).get();
-            q.getPlant().getPhotos().iterator().forEachRemaining(ph -> {
-                ph.setPlant(q.getPlant());
-            });
+
+            if(plant.getFile() != null){
+                q.getPlant().getPhotos().iterator().forEachRemaining(ph -> {
+                    ph.setPlant(q.getPlant());
+                });
+            }
             q.setPlant(plant);
             q.getChoices().iterator().forEachRemaining(c -> {
                 c.setPlant(plant);
                 c.setQuestion(q);
                 q.getAnswers().iterator().forEachRemaining(a -> { 
                     a.setQuestion(q);
-                    a.setChoice(c);
                     a.setLearner(plant.getLearner());
                 });
             });
@@ -102,16 +104,24 @@ public class SerieService {
         return serie;
     }
 
+    /**
+     * Crée une serie en bdd
+     * @param serie
+     * @return
+     * @throws Exception
+     */
     public Serie createSerie(Serie serie) throws Exception {
         if(serie == null) throw new Exception();
-
         serie.getQuestions().iterator().forEachRemaining(q -> {
             q.setSerie(serie);
             Long id = q.getPlant().getId();
             Plant plant = this.planteRepository.findById(id).get();
-            q.getPlant().getPhotos().iterator().forEachRemaining(ph -> {
-                ph.setPlant(q.getPlant());
-            });
+
+            if(plant.getFile() != null){
+                q.getPlant().getPhotos().iterator().forEachRemaining(ph -> {
+                    ph.setPlant(q.getPlant());
+                });
+            }
             q.setPlant(plant);
             q.getChoices().iterator().forEachRemaining(c -> {
                 c.setPlant(plant);

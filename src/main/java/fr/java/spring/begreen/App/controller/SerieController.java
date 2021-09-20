@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.java.spring.begreen.App.model.Serie;
 import fr.java.spring.begreen.App.service.SerieService;
 
-@CrossOrigin(origins = "http://localhost:8100", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class SerieController {
     

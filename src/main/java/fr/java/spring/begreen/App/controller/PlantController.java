@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.SequenceGenerators;
 import javax.print.attribute.standard.Media;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -74,9 +75,9 @@ public class PlantController {
      * @return
      * @throws Exception
      */
-    @PatchMapping(path = "/plants/edit", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE})
-    public Plant editPlant(@ModelAttribute Plant plant, @RequestPart(required = false) MultipartFile file) throws Exception {
-        return this.plantService.editOne(plant);
+    @PatchMapping(path = "/plants/edit/{learner_id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE})
+    public Plant editPlant(@ModelAttribute Plant plant, @RequestPart(required = false) MultipartFile file, @PathVariable Long learner_id) throws Exception {
+        return this.plantService.editOne(plant, learner_id);
     }
 
     /**
@@ -85,9 +86,9 @@ public class PlantController {
      * @return
      * @throws Exception
      */
-    @PostMapping(path = "/plants/add/{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.TEXT_PLAIN_VALUE})
-    public Plant createPlant(@ModelAttribute Plant plant, @RequestPart(required = false) MultipartFile file, @PathVariable Long id) throws Exception {
-        return this.plantService.postOne(plant, id);
+    @PostMapping(path = "/plants/add/{learner_id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.TEXT_PLAIN_VALUE})
+    public Plant createPlant(@ModelAttribute Plant plant, @RequestPart(required = false) MultipartFile file, @PathVariable Long learner_id) throws Exception {
+        return this.plantService.postOne(plant, learner_id);
     }
 
     /**

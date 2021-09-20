@@ -16,12 +16,10 @@ import lombok.Data;
 public class Answer {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //Learner unique answer.
-    @JsonIgnore
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    private Choice choice;
+    private String description;
 
     @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})

@@ -33,12 +33,6 @@ public class Choice {
     @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE})
     @JsonIgnore
     private Question question;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "choice", cascade = {CascadeType.ALL, CascadeType.MERGE}) //fk_answer
-    private List<Answer> answers = new ArrayList<Answer>();
-
-
     
 
 }

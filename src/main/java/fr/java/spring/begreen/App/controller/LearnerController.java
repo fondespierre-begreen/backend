@@ -14,7 +14,7 @@ import fr.java.spring.begreen.App.repository.LearnerRepository;
 import fr.java.spring.begreen.App.service.LearnerService;
 
 
-@CrossOrigin(origins = "http://localhost:8100", allowedHeaders = "*") //allowed cors request
+@CrossOrigin(origins = "*", allowedHeaders = "*") //allowed cors request
 @RestController
 public class LearnerController {
 
