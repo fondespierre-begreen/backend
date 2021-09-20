@@ -24,6 +24,8 @@ public class Serie {
 
     private String total;
 
+    private Date CreatedAt;
+
     // private Date createdAt;
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "serie")
     private List<Question> questions = new ArrayList<Question>();

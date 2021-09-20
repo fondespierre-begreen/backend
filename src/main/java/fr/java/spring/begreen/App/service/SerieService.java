@@ -1,5 +1,7 @@
 package fr.java.spring.begreen.App.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -127,7 +129,7 @@ public class SerieService {
                 c.setPlant(plant);
                 c.setQuestion(q);
             });
-            
+            serie.setCreatedAt((new Date()));
         });
         
         this.serieRepository.save(serie);
