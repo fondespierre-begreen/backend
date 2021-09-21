@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import fr.java.spring.begreen.App.model.Learner;
 import fr.java.spring.begreen.App.model.Plant;
 import fr.java.spring.begreen.App.repository.PlantRepository;
 import fr.java.spring.begreen.App.service.PlantService;
@@ -98,6 +99,14 @@ public class PlantController {
     @GetMapping(path = "/lastPlant")
     public Integer getLastId(){
         return this.plantService.getLastPlant();
+    }
+
+    @PostMapping(path = "/test")
+    public Plant test(@RequestBody Plant plant){
+
+        this.plantRepository.save(plant);
+
+        return plant;
     }
     
 }

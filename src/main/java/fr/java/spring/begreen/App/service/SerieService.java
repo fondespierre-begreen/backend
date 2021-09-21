@@ -33,11 +33,10 @@ public class SerieService {
      * @return
      * @throws Exception
      */
-    public Serie findById(Long id) throws Exception{
-        if(id == null) throw new Exception();
-        Serie serie = this.serieRepository.findById(id).get();
+    public Serie findById(Long serie_id) throws Exception{
+        if(serie_id == null) throw new Exception();
         
-        return serie;
+        return this.serieRepository.find(serie_id);
     }
 
     /**
@@ -129,7 +128,7 @@ public class SerieService {
                 c.setPlant(plant);
                 c.setQuestion(q);
             });
-            serie.setCreatedAt((new Date()));
+            // serie.setCreatedAt((new Date()));
         });
         
         this.serieRepository.save(serie);

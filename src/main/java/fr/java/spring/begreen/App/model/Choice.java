@@ -26,7 +26,7 @@ public class Choice {
 
     private String description;
 
-    @JsonIgnore
+    // @JsonIgnore
     @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE})
     private Plant plant;
     
