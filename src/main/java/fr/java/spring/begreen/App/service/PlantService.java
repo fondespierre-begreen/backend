@@ -4,7 +4,11 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Random;
+
+import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,13 +63,21 @@ public class PlantService {
         if(plant == null || id == null) throw new Exception();
 
         if(plant.getFile() != null){
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+
+            String filename = "";
+            String name = new String(plant.getName());
+            byte[] digest = md.digest(name.getBytes());
+            filename = (new HexBinaryAdapter()).marshal(digest);
             
-            Path path = Paths.get(this.folder + plant.getFile().getOriginalFilename());
+            Path path = Paths.get(this.folder + filename+".jpeg");
             plant.getFile().transferTo(path);
             
             Photo p = new Photo();
             p.setPlant(plant);
-            p.setUrl(this.uri + "/images/" + plant.getFile().getOriginalFilename());
+            p.setUrl(this.uri + "/images/" + filename+".jpeg");
             ArrayList<Photo> arr = new ArrayList<Photo>();
             arr.add(p);
             plant.setPhotos(arr);
@@ -75,7 +87,7 @@ public class PlantService {
         plant.setLearner(learner);
         this.plantRepository.save(plant);
 
-        return plant;
+        return this.plantRepository.findById(plant.getId()).get();
     }
 
     /**

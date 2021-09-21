@@ -22,8 +22,6 @@ public class Serie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String total;
-
     // private Date CreatedAt;
 
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "serie")

@@ -19,16 +19,14 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private Choice choice;
 
-    @JsonIgnore
+    // @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Learner learner;
 
-    @JsonIgnore
+    // @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Question question;
-
-
-
 }

@@ -26,6 +26,9 @@ public class Choice {
 
     private String description;
 
+    @OneToMany(cascade = {CascadeType.ALL, CascadeType.MERGE})
+    private List<Answer> answers = new ArrayList<Answer>();
+
     // @JsonIgnore
     @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE})
     private Plant plant;

@@ -54,6 +54,4 @@ public class Plant {
     @Transient
     private MultipartFile file;
 
-    private String url;
-
 }
